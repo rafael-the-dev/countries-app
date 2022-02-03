@@ -1,6 +1,6 @@
 import { LOAD_ALL_COUNTRIES } from '../../graphql/queries';
 import { useQuery } from '@apollo/client';
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useGlobalStyles } from '../../styles'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -15,6 +15,8 @@ const Home = () => {
 
     const [ continent, setContinent ] = useState('africa');
     const [ countriesList, setContriesList ] = useState([]);
+    const countriesListRef = useRef([]);
+    const inputRef = useRef(null);
 
     const continents = useMemo(() => [
         {
@@ -40,7 +42,26 @@ const Home = () => {
     ], []);
 
     const handleChange = useCallback(() => {}, [])//
-    const handleClick = useCallback(() => {}, [])//
+
+    const inputChangeHandler = useCallback(event => {
+        const value = event.target.value;
+        if(!Boolean(value)) {
+            setContriesList(countriesListRef.current)
+        }
+    }, []);
+
+    const handleClick = useCallback(() => {//
+        console.log(inputRef.current.value);
+        const value = inputRef.current.value;
+        if(Boolean(value)) {
+            setContriesList(list => {
+                const result = list.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+                if(result.length === 0)
+                    return list;
+                return result;
+            })
+        }
+    }, [])//
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
@@ -50,6 +71,7 @@ const Home = () => {
     useEffect(() => {
         if(data) {
             console.log(data.countries)
+            countriesListRef.current = data.countries;
             setContriesList(data.countries)
         }
     }, [ data ]);
@@ -69,6 +91,8 @@ const Home = () => {
                         id="outlined-adornment-password"
                         placeholder='Search for a country'
                         className={classNames('border-0')}
+                        inputRef={inputRef}
+                        onChange={inputChangeHandler}
                         endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -104,7 +128,7 @@ const Home = () => {
                         <Card 
                             component="article" 
                             elevation={0}
-                            key={index}>
+                            key={item.name + index}>
                             <CardMedia
                                 alt="Paella dish"
                                 component="img"
