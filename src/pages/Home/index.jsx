@@ -13,12 +13,16 @@ const Home = () => {
     const classes = useStyles();
     const globalStyles = useGlobalStyles();
 
-    const [ continent, setContinent ] = useState('africa');
+    const [ continent, setContinent ] = useState('all');
     const [ countriesList, setContriesList ] = useState([]);
     const countriesListRef = useRef([]);
     const inputRef = useRef(null);
 
     const continents = useMemo(() => [
+        {
+          value: 'all',
+          label: 'All',
+        },
         {
           value: 'africa',
           label: 'Africa',
@@ -48,7 +52,7 @@ const Home = () => {
             const result = countriesListRef.current.filter(item => item.region.toLowerCase().includes(value.toLowerCase()));
             console.log(result)
             if(result.length === 0)
-                return list;
+                return countriesListRef.current;
             return result;
         })
     }, [])//
@@ -66,7 +70,7 @@ const Home = () => {
             setContriesList(list => {
                 const result = countriesListRef.current.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
                 if(result.length === 0)
-                    return list;
+                    return countriesListRef.current;
                 return result;
             })
         }
