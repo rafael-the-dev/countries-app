@@ -41,7 +41,17 @@ const Home = () => {
         },
     ], []);
 
-    const handleChange = useCallback(() => {}, [])//
+    const handleChange = useCallback(event => {
+        const value = event.target.value;
+        setContinent(value);
+        setContriesList(list => {
+            const result = countriesListRef.current.filter(item => item.region.toLowerCase().includes(value.toLowerCase()));
+            console.log(result)
+            if(result.length === 0)
+                return list;
+            return result;
+        })
+    }, [])//
 
     const inputChangeHandler = useCallback(event => {
         const value = event.target.value;
@@ -51,11 +61,10 @@ const Home = () => {
     }, []);
 
     const handleClick = useCallback(() => {//
-        console.log(inputRef.current.value);
         const value = inputRef.current.value;
         if(Boolean(value)) {
             setContriesList(list => {
-                const result = list.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+                const result = countriesListRef.current.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
                 if(result.length === 0)
                     return list;
                 return result;
@@ -128,7 +137,7 @@ const Home = () => {
                         <Card 
                             component="article" 
                             elevation={0}
-                            key={item.name + index}>
+                            key={item.name}>
                             <CardMedia
                                 alt="Paella dish"
                                 component="img"
