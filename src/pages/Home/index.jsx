@@ -4,14 +4,17 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { useGlobalStyles } from '../../styles'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { FormControl, InputAdornment, IconButton, InputLabel, MenuItem, OutlinedInput, Paper, TextField } from '@mui/material'
+import { Card, CardContent, CardMedia, FormControl, InputAdornment, IconButton, InputLabel, MenuItem, 
+    OutlinedInput, Paper, TextField, Typography } from '@mui/material'
 import { useStyles } from './styles';
+import React from 'react'
 
 const Home = () => {
     const classes = useStyles();
     const globalStyles = useGlobalStyles();
 
-    const [ continent, setContinent ] = useState('africa')
+    const [ continent, setContinent ] = useState('africa');
+    const [ countriesList, setContriesList ] = useState([]);
 
     const continents = useMemo(() => [
         {
@@ -45,7 +48,10 @@ const Home = () => {
 
     const { data } = useQuery(LOAD_ALL_COUNTRIES);
     useEffect(() => {
-        console.log(data)
+        if(data) {
+            console.log(data.countries)
+            setContriesList(data.countries)
+        }
     }, [ data ]);
 
     return (
@@ -93,6 +99,49 @@ const Home = () => {
                     ))}
                 </TextField>
             </form>
+            <div className={classNames('grid mt-12 md:justify-between', classes.cardsContainer)}>
+                {
+                    countriesList.map((item, index) => (
+                        <Card 
+                            component="article" 
+                            elevation={0}
+                            key={index}>
+                            <CardMedia
+                                alt="Paella dish"
+                                component="img"
+                                className={classNames(classes.cardImage)}
+                                height="194"
+                                image="/static/images/cards/paella.jpg"
+                            />
+                            <CardContent>
+                                <Typography 
+                                    component="h2"
+                                    className={classNames('font-bold')}
+                                    variant="h5">
+                                        { item.name }
+                                </Typography>
+                                <Typography 
+                                    className={classNames('text-base mt-4')}
+                                    component="p">
+                                        <span className={classNames('font-bold')}></span>
+                                </Typography>
+                                <Typography 
+                                    className={classNames('text-base mt-1.5')}
+                                    component="p">
+                                        <span className={classNames('font-bold')}>Region: </span>
+                                        { item.continent.name}
+                                </Typography>
+                                <Typography 
+                                    className={classNames('text-base mt-1.5')}
+                                    component="p">
+                                        <span className={classNames('font-bold')}>Capital: </span>
+                                        { item.capital}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    ))
+                }
+            </div>
         </main>
     )
 };

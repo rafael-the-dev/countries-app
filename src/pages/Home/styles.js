@@ -14,5 +14,22 @@ export const useStyles = makeStyles(theme => ({
     },
     select: {
         width: 200
+    },
+    cardsContainer: {
+        gridGap: '1.5rem 0',
+        gridTemplateColumns: '100%',
+        gridTemplateRows: 'auto',
+        [theme.breakpoints.up('sm')]: {
+            gridGap: '1.5rem 2%',
+            gridTemplateColumns: '49% 49%',
+            gridTemplateRows: 'auto',
+        },
+        [theme.breakpoints.up('md')]: {
+            gridTemplateColumns: '31% 31% 31%',
+            gridTemplateRows: 'auto',
+        }
+    },
+    cardImage: {
+        height: 230
     }
 }))
