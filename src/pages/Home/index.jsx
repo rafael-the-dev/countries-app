@@ -65,9 +65,9 @@ const Home = () => {
                     elevation={0}  
                     fullWidth 
                     variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">Search for a country</InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-password"
+                        placeholder='Search for a country'
                         className={classNames('border-0')}
                         endAdornment={
                         <InputAdornment position="end">
@@ -88,7 +88,6 @@ const Home = () => {
                     classes={{ root: classNames('bg-white mt-4 sm:mt-0', classes.select)}}
                     id="outlined-select-currency"
                     select
-                    label="Filter by region"
                     value={continent}
                     onChange={handleChange}
                     >
@@ -111,7 +110,7 @@ const Home = () => {
                                 component="img"
                                 className={classNames(classes.cardImage)}
                                 height="194"
-                                image="/static/images/cards/paella.jpg"
+                                image={ item.flagURL }
                             />
                             <CardContent>
                                 <Typography 
@@ -126,16 +125,16 @@ const Home = () => {
                                         <span className={classNames('font-bold')}></span>
                                 </Typography>
                                 <Typography 
-                                    className={classNames('text-base mt-1.5')}
+                                    className={classNames('text-base mt-1.5 capitalize')}
                                     component="p">
                                         <span className={classNames('font-bold')}>Region: </span>
-                                        { item.continent.name}
+                                        { item.region}
                                 </Typography>
                                 <Typography 
                                     className={classNames('text-base mt-1.5')}
                                     component="p">
                                         <span className={classNames('font-bold')}>Capital: </span>
-                                        { item.capital}
+                                        { item.capitalCities ? item.capitalCities[0] : '' }
                                 </Typography>
                             </CardContent>
                         </Card>
