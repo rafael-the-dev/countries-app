@@ -8,6 +8,7 @@ import { Card, CardContent, CardMedia, FormControl, InputAdornment, IconButton, 
     OutlinedInput, Paper, TextField, Typography } from '@mui/material'
 import { useStyles } from './styles';
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     const classes = useStyles();
@@ -142,38 +143,40 @@ const Home = () => {
                             component="article" 
                             elevation={0}
                             key={item.name}>
-                            <CardMedia
-                                alt="Paella dish"
-                                component="img"
-                                className={classNames(classes.cardImage)}
-                                height="194"
-                                image={ item.flagURL }
-                            />
-                            <CardContent>
-                                <Typography 
-                                    component="h2"
-                                    className={classNames('font-bold')}
-                                    variant="h5">
-                                        { item.name }
-                                </Typography>
-                                <Typography 
-                                    className={classNames('text-base mt-4')}
-                                    component="p">
-                                        <span className={classNames('font-bold')}></span>
-                                </Typography>
-                                <Typography 
-                                    className={classNames('text-base mt-1.5 capitalize')}
-                                    component="p">
-                                        <span className={classNames('font-bold')}>Region: </span>
-                                        { item.region}
-                                </Typography>
-                                <Typography 
-                                    className={classNames('text-base mt-1.5')}
-                                    component="p">
-                                        <span className={classNames('font-bold')}>Capital: </span>
-                                        { item.capitalCities ? item.capitalCities[0] : '' }
-                                </Typography>
-                            </CardContent>
+                            <Link to={`/countries/${item.cca3.toLowerCase()}`}>
+                                <CardMedia
+                                    alt="Paella dish"
+                                    component="img"
+                                    className={classNames(classes.cardImage)}
+                                    height="194"
+                                    image={ item.flagURL }
+                                />
+                                <CardContent>
+                                    <Typography 
+                                        component="h2"
+                                        className={classNames('font-bold')}
+                                        variant="h5">
+                                            { item.name }
+                                    </Typography>
+                                    <Typography 
+                                        className={classNames('text-base mt-4')}
+                                        component="p">
+                                            <span className={classNames('font-bold')}></span>
+                                    </Typography>
+                                    <Typography 
+                                        className={classNames('text-base mt-1.5 capitalize')}
+                                        component="p">
+                                            <span className={classNames('font-bold')}>Region: </span>
+                                            { item.region}
+                                    </Typography>
+                                    <Typography 
+                                        className={classNames('text-base mt-1.5')}
+                                        component="p">
+                                            <span className={classNames('font-bold')}>Capital: </span>
+                                            { item.capitalCities ? item.capitalCities[0] : '' }
+                                    </Typography>
+                                </CardContent>
+                            </Link>
                         </Card>
                     ))
                 }
