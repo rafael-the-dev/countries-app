@@ -107,7 +107,7 @@ const CountryDetails = () => {
                                         <Paper 
                                             component='li' 
                                             elevation={0}
-                                            className={classNames('px-4 py-2 mr-3')}
+                                            className={classNames('px-4 py-2 mb-3 mr-3')}
                                             key={index}>
                                             { item.name }
                                         </Paper>
