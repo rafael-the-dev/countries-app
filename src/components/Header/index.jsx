@@ -1,7 +1,7 @@
 import { Button, Paper, Typography } from '@mui/material'
 import classNames from 'classnames'
 import { useGlobalStyles } from '../../styles'
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+//import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { AppContext } from '../../context/AppContext';

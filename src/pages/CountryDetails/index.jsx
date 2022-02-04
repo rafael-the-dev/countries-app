@@ -1,6 +1,6 @@
 import { LOAD_COUNTRY_DETAILS } from '../../graphql/queries';
 import { useLazyQuery } from '@apollo/client';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { useGlobalStyles } from '../../styles'
 import { useStyles } from './styles';

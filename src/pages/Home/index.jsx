@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useGlobalStyles } from '../../styles'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { Card, CardContent, CardMedia, FormControl, InputAdornment, IconButton, InputLabel, MenuItem, 
+import { Card, CardContent, CardMedia, FormControl, InputAdornment, IconButton, MenuItem, 
     OutlinedInput, Paper, TextField, Typography } from '@mui/material'
 import { useStyles } from './styles';
 import React from 'react'
