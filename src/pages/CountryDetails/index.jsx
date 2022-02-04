@@ -6,7 +6,7 @@ import { useGlobalStyles } from '../../styles'
 import { useStyles } from './styles';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { Link, useParams } from 'react-router-dom'
-import { Button, Typography } from '@mui/material'
+import { Button, Paper, Typography } from '@mui/material'
 
 const CountryDetails = () => {
     const classes = useStyles();
@@ -94,6 +94,26 @@ const CountryDetails = () => {
                                 <span className={classNames('font-bold')}>Languages: </span>
                                 { country.languages ? country.languages.map(item => item.name).join(', ') : ''}
                             </Typography>    
+                        </div>
+                        <div className={classNames('text-base mt-4')}>
+                            <Typography 
+                                className={classNames('text-base mt-1.5 font-bold')}
+                                component="p">
+                                Borders
+                            </Typography>   
+                            <ul className={classNames('mt-3 flex items-center flex-wrap')}>
+                                {
+                                    country.borders && country.borders.map((item, index) => (
+                                        <Paper 
+                                            component='li' 
+                                            elevation={0}
+                                            className={classNames('px-4 py-2 mr-3')}
+                                            key={index}>
+                                            { item.name }
+                                        </Paper>
+                                    ))
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>
