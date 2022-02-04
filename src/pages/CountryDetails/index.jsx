@@ -47,7 +47,7 @@ const CountryDetails = () => {
                     </Button>
                 </Link>
             </div>
-            <section className={classNames('mt-8 md:flex md:items-center md:justify-center')}>
+            { data ? <section className={classNames('mt-8 md:flex md:items-center md:justify-center')}>
                 <div className={classNames('', classes.imageContainer)}>
                     <img 
                         alt=""
@@ -117,7 +117,14 @@ const CountryDetails = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> : (
+                <Typography 
+                    component="h2"
+                    className={classNames('text-center  mt-24 font-bold')}
+                    variant="h3">
+                        Loading...
+                </Typography>
+            )}
         </main>
     )
 };

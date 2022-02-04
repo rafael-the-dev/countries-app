@@ -136,7 +136,7 @@ const Home = () => {
                     ))}
                 </TextField>
             </form>
-            <div className={classNames('grid mt-12 md:justify-between', classes.cardsContainer)}>
+            { data ? <div className={classNames('grid mt-12 md:justify-between', classes.cardsContainer)}>
                 {
                     countriesList.map((item, index) => (
                         <Card 
@@ -180,7 +180,14 @@ const Home = () => {
                         </Card>
                     ))
                 }
-            </div>
+            </div> : (
+                <Typography 
+                    component="h2"
+                    className={classNames('text-center mt-24 font-bold')}
+                    variant="h3">
+                        Loading...
+                </Typography>
+            )}
         </main>
     )
 };
