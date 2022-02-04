@@ -92,12 +92,12 @@ const Home = () => {
 
     return (
         <main 
-            className={classNames('py-8', globalStyles.px, globalStyles.main)}>
+            className={classNames('py-8 dark:bg-slate-900', globalStyles.px, globalStyles.main)}>
             <form
                 className={classNames('sm:flex sm:justify-between md:items-center')}>
                 <Paper 
                     component={FormControl}
-                    classes={{ root: classNames(classes.inputContainer)}}
+                    classes={{ root: classNames(classes.inputContainer, 'dark:bg-slate-800 dark:text-slate-200')}}
                     elevation={0}  
                     fullWidth 
                     variant="outlined">
@@ -110,12 +110,12 @@ const Home = () => {
                         endAdornment={
                         <InputAdornment position="end">
                             <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClick}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="start"
-                            >
-                                <SearchOutlinedIcon />
+                                aria-label="toggle password visibility"
+                                onClick={handleClick}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="start"
+                                >
+                                    <SearchOutlinedIcon className={classNames('dark:text-slate-200')} />
                             </IconButton>
                         </InputAdornment>
                         }
@@ -123,14 +123,17 @@ const Home = () => {
                     />
                 </Paper>
                 <TextField
-                    classes={{ root: classNames('bg-white mt-4 sm:mt-0', classes.select)}}
+                    classes={{ root: classNames('bg-white mt-4 sm:mt-0 dark:bg-slate-800 dark:text-slate-200', classes.select)}}
                     id="outlined-select-currency"
                     select
                     value={continent}
                     onChange={handleChange}
                     >
                     {continents.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
+                        <MenuItem 
+                            className={classNames('dark:bg-slate-800 dark:text-slate-200')}
+                            key={option.value} 
+                            value={option.value}>
                             {option.label}
                         </MenuItem>
                     ))}
@@ -151,28 +154,28 @@ const Home = () => {
                                     height="194"
                                     image={ item.flagURL }
                                 />
-                                <CardContent>
+                                <CardContent className={classNames('dark:bg-slate-800')}>
                                     <Typography 
                                         component="h2"
-                                        className={classNames('font-bold')}
+                                        className={classNames('font-bold dark:text-slate-100')}
                                         variant="h5">
                                             { item.name }
                                     </Typography>
                                     <Typography 
-                                        className={classNames('text-base mt-4')}
+                                        className={classNames('text-base dark:text-slate-200 mt-4')}
                                         component="p">
-                                            <span className={classNames('font-bold')}></span>
+                                            <span className={classNames('font-bold dark:text-slate-100')}></span>
                                     </Typography>
                                     <Typography 
-                                        className={classNames('text-base mt-1.5 capitalize')}
+                                        className={classNames('text-base dark:text-slate-200 mt-1.5 capitalize')}
                                         component="p">
-                                            <span className={classNames('font-bold')}>Region: </span>
+                                            <span className={classNames('font-bold dark:text-slate-100')}>Region: </span>
                                             { item.region}
                                     </Typography>
                                     <Typography 
-                                        className={classNames('text-base mt-1.5')}
+                                        className={classNames('text-base dark:text-slate-200 mt-1.5')}
                                         component="p">
-                                            <span className={classNames('font-bold')}>Capital: </span>
+                                            <span className={classNames('font-bold dark:text-slate-100')}>Capital: </span>
                                             { item.capitalCities ? item.capitalCities[0] : '' }
                                     </Typography>
                                 </CardContent>
@@ -183,7 +186,7 @@ const Home = () => {
             </div> : (
                 <Typography 
                     component="h2"
-                    className={classNames('text-center mt-24 font-bold')}
+                    className={classNames('text-center mt-24 font-bold dark:text-slate-200')}
                     variant="h3">
                         Loading...
                 </Typography>

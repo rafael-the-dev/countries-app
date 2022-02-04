@@ -2,8 +2,14 @@ module.exports = {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}"
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'dark-blue': '#2B3844',
+        'very-dark-blue': '202C36'
+      }
+    },
     screens: {
       'sm': '600px',
       // => @media (min-width: 640px) { ... }

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { StylesProvider } from '@mui/styles';
-//import { AppContextProvider } from '../../context/AppContext';
+import { AppContextProvider } from '../../context/AppContext';
 import loadable from '@loadable/component';
 
 const App = () => {
@@ -14,13 +14,15 @@ const App = () => {
         <>
             <StylesProvider injectFirst>
                 <ThemeProvider theme={theme}>
-                    <Router>
-                        <Header />
-                        <Routes>
-                            <Route exact path="/countries/:id" element={<CountryDetailsPage />} />
-                            <Route exact path="/" element={<HomePage />} />
-                        </Routes>
-                    </Router>
+                    <AppContextProvider>
+                        <Router>
+                            <Header />
+                            <Routes>
+                                <Route exact path="/countries/:id" element={<CountryDetailsPage />} />
+                                <Route exact path="/" element={<HomePage />} />
+                            </Routes>
+                        </Router>
+                    </AppContextProvider>
                 </ThemeProvider>
             </StylesProvider>
         </>

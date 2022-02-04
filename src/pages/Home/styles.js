@@ -13,7 +13,12 @@ export const useStyles = makeStyles(theme => ({
         }
     },
     select: {
-        width: 200
+        width: 200,
+        '.dark &': {
+            '& ul': {
+                backgroundColor: '#1e293b'
+            }
+        }
     },
     cardsContainer: {
         gridGap: '1.5rem 0',

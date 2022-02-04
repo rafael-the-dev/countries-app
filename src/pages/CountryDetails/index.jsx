@@ -37,12 +37,12 @@ const CountryDetails = () => {
 
     return (
         <main
-            className={classNames('py-8', globalStyles.px, globalStyles.main)}>
+            className={classNames('py-8 dark:bg-slate-900', globalStyles.px, globalStyles.main)}>
             <div>
                 <Link to="/">
                     <Button
                         startIcon={<ArrowBackOutlinedIcon />}
-                        className={classNames('text-black')}>
+                        className={classNames('text-black dark:bg-slate-800 dark:text-slate-200')}>
                         Back
                     </Button>
                 </Link>
@@ -58,56 +58,56 @@ const CountryDetails = () => {
                 <div className={classNames('mt-8 md:mt-0 md:ml-28')}>
                     <Typography 
                         component="h2"
-                        className={classNames('font-bold')}
+                        className={classNames('font-bold dark:text-slate-100')}
                         variant="h5">
                             { country.name }
                     </Typography>
                     <div className={classNames('mt-6')}>
                         <div>
                             <Typography 
-                                className={classNames('text-base')}
+                                className={classNames('text-base dark:text-slate-200')}
                                 component="p">
-                                    <span className={classNames('font-bold')}>Region: </span>
+                                    <span className={classNames('font-bold dark:text-slate-100')}>Region: </span>
                                     { country.region}
                             </Typography>
                             <Typography 
-                                className={classNames('text-base mt-1.5')}
+                                className={classNames('text-base dark:text-slate-200 mt-1.5')}
                                 component="p">
-                                <span className={classNames('font-bold capitalize')}>Sub region: </span>
+                                <span className={classNames('font-bold dark:text-slate-100 capitalize')}>Sub region: </span>
                                 { country.subregion }
                             </Typography>
                             <Typography 
-                                className={classNames('text-base mt-1.5')}
+                                className={classNames('text-base dark:text-slate-200 mt-1.5')}
                                 component="p">
-                                <span className={classNames('font-bold')}>Capital: </span>
+                                <span className={classNames('font-bold dark:text-slate-100')}>Capital: </span>
                                 { country.capitalCities ? country.capitalCities[0] : ''}
                             </Typography> 
                             <Typography 
-                                className={classNames('text-base mt-1.5')}
+                                className={classNames('text-base dark:text-slate-200 mt-1.5')}
                                 component="p">
-                                <span className={classNames('font-bold')}>Currencies: </span>
+                                <span className={classNames('font-bold dark:text-slate-100')}>Currencies: </span>
                                 { country.currencies ? country.currencies.map(item => item.name).join(', ') : ''}
                             </Typography>
                             <Typography 
-                                className={classNames('text-base mt-1.5')}
+                                className={classNames('text-base dark:text-slate-200 mt-1.5')}
                                 component="p">
-                                <span className={classNames('font-bold')}>Languages: </span>
+                                <span className={classNames('font-bold dark:text-slate-100')}>Languages: </span>
                                 { country.languages ? country.languages.map(item => item.name).join(', ') : ''}
                             </Typography>    
                         </div>
-                        <div className={classNames('text-base mt-4')}>
+                        <div className={classNames('mt-4')}>
                             <Typography 
-                                className={classNames('text-base mt-1.5 font-bold')}
+                                className={classNames('text-base dark:text-slate-200 mt-1.5 font-bold')}
                                 component="p">
                                 Borders
                             </Typography>   
-                            <ul className={classNames('mt-3 flex items-center flex-wrap')}>
+                            <ul id="borders" className={classNames('mt-3 flex items-center flex-wrap')}>
                                 {
                                     country.borders && country.borders.map((item, index) => (
                                         <Paper 
                                             component='li' 
                                             elevation={0}
-                                            className={classNames('px-4 py-2 mb-3 mr-3')}
+                                            className={classNames('px-4 py-2 mb-3 mr-3 dark:bg-slate-800 dark:text-slate-200')}
                                             key={index}>
                                             { item.name }
                                         </Paper>
@@ -120,7 +120,7 @@ const CountryDetails = () => {
             </section> : (
                 <Typography 
                     component="h2"
-                    className={classNames('text-center  mt-24 font-bold')}
+                    className={classNames('text-center dark:text-slate-200 mt-24 font-bold')}
                     variant="h3">
                         Loading...
                 </Typography>

@@ -1,5 +1,31 @@
 body {
     background-color: #F2F2F2;
+    height: 100vh;
+}
+
+.dark body, .dark .MuiMenuItem-root:hover {
+    background-color: #0f172a;
+}
+
+.dark ul:not(#borders) {
+    background-color: #1e293b;
+}
+
+.dark .MuiSelect-select, .dark .MuiSvgIcon-root, .dark .MuiOutlinedInput-input {
+    color: #e2e8f0;
+}
+
+.dark ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #e2e8f0;
+    opacity: 1; /* Firefox */
+}
+  
+.dark :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #e2e8f0;
+} 
+  
+.dark  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #e2e8f0;
 }
 
 fieldset {
